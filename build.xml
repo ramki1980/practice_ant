@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Project definition -->
+<project name="AntSample" basedir="." default="compile">
+
+    <!-- Define properties needed for build -->
+    <property name="srcdir"  value="src"/>
+    <property name="outdir"  value="classes"/>
+
+    <!-- Clean target.  Delete the output directory. -->
+    <target name="clean" >
+          <delete dir="${outdir}" />
+    </target>
+	
+	<!-- Init target.  Create the output directory if it does not exisr.  Copy inventory.xml to ${outdir} -->
+    <target name="init" depends="clean" >
+          <mkdir dir="${outdir}" />
+		  <copy file="${basedir}\inventory.xml" todir="${outdir}" />
+    </target>
+
+    <target name="compile" depends="init" >
+          <javac srcdir="${srcdir}" destdir="${outdir}" />
+    </target>
+	
+</project>
